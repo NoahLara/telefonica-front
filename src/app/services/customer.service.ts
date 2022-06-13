@@ -28,6 +28,10 @@ export class CustomerService {
     return this.http.put<DefaultResponse<JSON>>(endpoints.customers + `/${updatedCustomer.Id_Customer}`, updatedCustomer);
   }
 
+  public deleteCustomer(idCustomer: string | null | number): Observable<DefaultResponse<JSON>>{
+    return this.http.delete<DefaultResponse<JSON>>(endpoints.customers + `/${idCustomer}`);
+  }
+
 
 
 }

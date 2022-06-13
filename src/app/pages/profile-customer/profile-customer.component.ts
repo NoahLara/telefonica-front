@@ -73,29 +73,6 @@ export class ProfileCustomerComponent implements OnInit {
   }
 
 
-  updateCustomer(): void {
-
-    this.updatedCustomer = {
-      Id_Customer: this.customerForm.get('Id_Customer')?.value,
-      Complete_Name: this.customerForm.get('Complete_Name')?.value,
-      Contract_Date: this.customerForm.get('Contract_Date')?.value,
-      Address_Customer: this.customerForm.get('Address')?.value,
-      Id_Celphone_Plan: this.customerForm.get('Id_Celphone_Plan')?.value,
-      Documents: {
-        DUI: this.customerForm.get('DUI')?.value,
-        NIT: this.customerForm.get('NIT')?.value,
-        AFP: this.customerForm.get('AFP')?.value,
-        ISSS: this.customerForm.get('ISSS')?.value
-      }
-    }
-
-    this.customersService.updateCustomer(this.updatedCustomer).subscribe((_res) => {
-      if (_res.status === 200) {
-        this.router.navigate(['/customers']);
-      }
-    })
-
-  }
 
   validatePlan(): string {
 
@@ -138,6 +115,39 @@ export class ProfileCustomerComponent implements OnInit {
 
   }
 
+  updateCustomer(): void {
+
+    this.updatedCustomer = {
+      Id_Customer: this.customerForm.get('Id_Customer')?.value,
+      Complete_Name: this.customerForm.get('Complete_Name')?.value,
+      Contract_Date: this.customerForm.get('Contract_Date')?.value,
+      Address_Customer: this.customerForm.get('Address')?.value,
+      Id_Celphone_Plan: this.customerForm.get('Id_Celphone_Plan')?.value,
+      Documents: {
+        DUI: this.customerForm.get('DUI')?.value,
+        NIT: this.customerForm.get('NIT')?.value,
+        AFP: this.customerForm.get('AFP')?.value,
+        ISSS: this.customerForm.get('ISSS')?.value
+      }
+    }
+
+    this.customersService.updateCustomer(this.updatedCustomer).subscribe((_res) => {
+      if (_res.status === 200) {
+        this.router.navigate(['/customers']);
+      }
+    })
+
+  }
+
+  deleteCustomer(): void {
+    const idCustomer = this.customer.Id_Customer;
+
+    this.customersService.deleteCustomer(idCustomer).subscribe((_res) => {
+      if (_res.status === 200) {
+        this.router.navigate(['/customers']);
+      }
+    });
+  }
 
 
 }
