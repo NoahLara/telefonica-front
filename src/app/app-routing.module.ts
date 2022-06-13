@@ -12,11 +12,11 @@ const routes: Routes = [
   { path:'sign-up', component: SignUpComponent },
   { path:'sign-up', component: SignUpComponent },
   { path:'customers', component: CustomersComponent },
-  { path:'profile-customer', component: ProfileCustomerComponent },
+  { path:'profile-customer/:id', component: ProfileCustomerComponent },
   { path:'users', component: UsersComponent },
   { path:'users', component: UsersComponent },
-  {path: '404', component: NotFoundComponent},
-  {path: '**', redirectTo: '/404'}
+  { path:'404', component: NotFoundComponent},
+  { path:'**', redirectTo:'/customers', pathMatch:'full' },
 ];
 
 @NgModule({

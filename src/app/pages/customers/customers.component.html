@@ -1,1 +1,27 @@
-<p>customers works!</p>
+<div class="customer-container">
+    <div class="table-responsive">
+        <h1>Customers List</h1>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Complete Name</th>
+                    <th scope="col">Contract Date</th>
+                    <th scope="col">Address</th>
+                    <th scope="col">Profile</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let customer of customers;">
+                    <th scope="row">{{customer.Complete_Name}}</th>
+                    <td>{{customer.Contract_Date}}</td>
+                    <td>{{customer.Address_Customer}}</td>
+                    <td>
+                        <button type="button" class="btn btn-outline-primary" [routerLink]="['/profile-customer', customer.Id_Customer]">
+                            <i class="fa fa-eye"></i>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

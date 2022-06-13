@@ -1,1 +1,124 @@
-<p>profile-custome works!</p>
+<div class="customer-container">
+    <div class="d-flex justify-content-start">
+        <div class="col-2">
+            <button class="btn btn-primary" [routerLink]="['/customers']">
+                <i class="fa fa-chevron-circle-left"></i>
+            </button>
+        </div>
+        <div class="col-5">
+            <h1>Customer Profile</h1>
+        </div>
+    </div>
+    <form [formGroup]="customerForm">
+
+        <div class="form-row">
+            <!--📌 Complete_Name -->
+            <div class="form-group col-md-4">
+                <label for="completeName" class="col-sm-2 col-form-label">Name:</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="completeName" formControlName="Complete_Name"
+                        placeholder="Complete Name">
+                </div>
+            </div>
+
+            <!--📌 Address_Customer -->
+            <div class="form-group col-md-4">
+                <label for="address" class="col-sm-2 col-form-label">Address:</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="address" formControlName="Address"
+                        placeholder="Address">
+                </div>
+            </div>
+
+            <!--📌 Contract_Date -->
+            <div class="form-group col-md-4">
+                <label for="contract" class="col-12 col-form-label">Contract Date:</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="contract" formControlName="Contract_Date"
+                        placeholder="Contract Date">
+                </div>
+            </div>
+
+        </div>
+
+        <div class="form-row">
+
+            <!--📌 Name_Plan -->
+            <div class="form-group col-md-4">
+                <label for="plan" class="col-12 col-form-label">
+                    Name Plan: <small>Current Plan - {{customer?.Name_Plan}}</small>
+                </label>
+                <div class="col-sm-10">
+                    <select class="custom-select" formControlName="Id_Celphone_Plan" (change)="onSelectPlan($event)">
+                        <option value="1">1- Unlimited </option>
+                        <option value="2">2- Hostpot</option>
+                        <option value="3">3- Premium</option>
+                        <option value="4">4- Basic</option>
+                    </select>
+                </div>
+            </div>
+
+
+            <!--📌 Price -->
+            <div class="form-group col-md-4">
+                <label for="price" class="col-12 col-form-label">Price:</label>
+                <div class="col-sm-10">
+                    <input type="text" [disabled]="true" class="form-control" id="price" formControlName="Price"
+                        placeholder="Price">
+                </div>
+            </div>
+
+            <!--📌 DUI -->
+            <div class="form-group col-md-4">
+                <label for="dui" class="col-sm-2 col-form-label">DUI:</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="dui" formControlName="DUI" placeholder="DUI">
+                </div>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <!--📌 NIT -->
+            <div class="form-group col-md-4">
+                <label for="nit" class="col-sm-2 col-form-label">NIT:</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="nit" formControlName="NIT" placeholder="NIT">
+                </div>
+            </div>
+
+            <!--📌 AFP -->
+            <div class="form-group col-md-4">
+                <label for="afp" class="col-sm-2 col-form-label">AFP:</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="afp" formControlName="AFP" placeholder="AFP">
+                </div>
+            </div>
+
+            <!--📌 ISSS -->
+            <div class="form-group col-md-4">
+                <label for="isss" class="col-sm-2 col-form-label">ISSS:</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="isss" formControlName="ISSS" placeholder="ISSS">
+                </div>
+            </div>
+
+        </div>
+
+        <!--📌 SAVE BUTTON-->
+        <div class="form-group">
+            <div class="col-sm-10">
+                <button class="btn btn-primary" (click)="updateCustomer()">
+                    <i class="fa fa-save"></i>
+                    Save Changes
+                </button>
+
+                <button class="btn btn-danger ml-1">
+                    <i class="fa fa-trash-alt"></i>
+                    Delete Customer
+                </button>
+
+
+            </div>
+        </div>
+    </form>
+</div>
