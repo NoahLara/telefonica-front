@@ -1,6 +1,7 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
 import { CustomerService } from 'src/app/services/customer.service';
 import { Customers } from 'src/app/utils/models/customers.interface';
 import { DefaultResponse } from 'src/app/utils/models/deafult-response.interface';
@@ -40,7 +41,8 @@ export class CustomersComponent implements OnInit {
   constructor(
     private customerService: CustomerService,
     private router: Router,
-    private builder: FormBuilder) { }
+    private builder: FormBuilder,
+    private authService: AuthService) { }
 
   ngOnInit(): void {
 
@@ -112,6 +114,10 @@ export class CustomersComponent implements OnInit {
 
     ));
 
+  }
+
+  loggedInOut(): boolean {
+    return this.authService.loggedIn();
   }
 
 }
