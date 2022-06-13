@@ -7,6 +7,8 @@ import { Customers } from 'src/app/utils/models/customers.interface';
 import { DefaultResponse } from 'src/app/utils/models/deafult-response.interface';
 import { NewCustomer } from 'src/app/utils/models/save-customer.interface';
 
+import * as XLSX from 'xlsx';
+
 @Component({
   selector: 'app-customers',
   templateUrl: './customers.component.html',
@@ -33,6 +35,12 @@ export class CustomersComponent implements OnInit {
     NIT: this.builder.control('', Validators.required),
     AFP: this.builder.control('', Validators.required),
     ISSS: this.builder.control('', Validators.required)
+  });
+
+
+  txtForm = this.builder.group({
+    content: this.builder.control(''),
+    name: this.builder.control('')
   });
 
 
@@ -119,5 +127,42 @@ export class CustomersComponent implements OnInit {
   loggedInOut(): boolean {
     return this.authService.loggedIn();
   }
+
+  generateDocument() {
+
+    let element = document.getElementById('customer-table');
+
+    /* generate worksheet */
+    const ws: XLSX.WorkSheet = XLSX.utils.table_to_sheet(element);
+
+    /* generate workbook and add the worksheet */
+    const wb: XLSX.WorkBook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, 'Customers Information');
+
+    /* save to file */
+    XLSX.writeFile(wb, 'SheetJS.xlsx');
+  }
+
+  createText() {
+
+    const { name, content } = this.txtForm.value;
+
+    const a = document.createElement("a");
+    const file = new Blob([content as string], { type: 'text/plain' });
+    const url = URL.createObjectURL(file);
+
+    a.href = url;
+    a.download = name as string;
+    a.click();
+
+    URL.revokeObjectURL(url);
+
+    this.closeModal.nativeElement.click();
+
+  }
+
+
+
+
 
 }
