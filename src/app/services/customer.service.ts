@@ -6,6 +6,7 @@ import { Customer } from '../utils/models/customer.interface';
 import { endpoints } from '../utils/endpoints';
 import { DefaultResponse } from '../utils/models/deafult-response.interface';
 import { UpdateCustomer } from '../utils/models/update-customer.interface';
+import { NewCustomer } from '../utils/models/save-customer.interface';
 
 
 @Injectable({
@@ -28,8 +29,12 @@ export class CustomerService {
     return this.http.put<DefaultResponse<JSON>>(endpoints.customers + `/${updatedCustomer.Id_Customer}`, updatedCustomer);
   }
 
-  public deleteCustomer(idCustomer: string | null | number): Observable<DefaultResponse<JSON>>{
+  public deleteCustomer(idCustomer: string | null | number): Observable<DefaultResponse<JSON>> {
     return this.http.delete<DefaultResponse<JSON>>(endpoints.customers + `/${idCustomer}`);
+  }
+
+  public createCustomer(newCustomer: NewCustomer): Observable<DefaultResponse<JSON>> {
+    return this.http.post<DefaultResponse<JSON>>(endpoints.customers, newCustomer);
   }
 
 
