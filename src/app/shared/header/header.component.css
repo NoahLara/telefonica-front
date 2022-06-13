@@ -14,5 +14,14 @@ nav{
 }
 
 .settings{
-    border:1px solid red;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.settings > button{
+    border: none;
+    background: transparent;
+    padding: 0.2em;
+    color: #fff;
 }

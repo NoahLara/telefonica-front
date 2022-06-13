@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from './guards/auth.guard';
+
 import { CustomersComponent } from './pages/customers/customers.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { ProfileCustomerComponent } from './pages/profile-customer/profile-customer.component';
@@ -10,10 +12,8 @@ import { UsersComponent } from './pages/users/users.component';
 const routes: Routes = [
   { path:'sign-in', component: SignInComponent },
   { path:'sign-up', component: SignUpComponent },
-  { path:'sign-up', component: SignUpComponent },
   { path:'customers', component: CustomersComponent },
-  { path:'profile-customer/:id', component: ProfileCustomerComponent },
-  { path:'users', component: UsersComponent },
+  { path:'profile-customer/:id', component: ProfileCustomerComponent, canActivate: [AuthGuard]},
   { path:'users', component: UsersComponent },
   { path:'404', component: NotFoundComponent},
   { path:'**', redirectTo:'/customers', pathMatch:'full' },

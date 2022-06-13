@@ -1,9 +1,22 @@
-
 <nav class="navbar navbar-dark bg-primary">
     <a class="navbar-brand" href="#">
         <img src="../../../assets/LogoTelefonica.png" class="logo" alt="Telefonica Logo" />
     </a>
-    <div class="mr-2 settings">
-        <h2>settings</h2>
+    <div class="mr-2 settings col-6">
+
+        <button routerLink="/customers">
+            Customers
+        </button>
+
+        <button routerLink="/sign-in" *ngIf="!loggedInOut()">
+            <i class="fa fa-sign-in-alt"></i>
+        </button>
+
+        <button *ngIf="loggedInOut();" (click)="logOut();">
+            <i class="fa fa-sign-out-alt"></i>
+        </button>
+
+
+
     </div>
 </nav>
