@@ -1,3 +1,14 @@
+# INSTRUCCIONES
+- Te clonas el proyecto.
+- Instalar NodeJS y NPM
+- Tenes que actualizar la version de CLI ANGULAR que es la 14.0.1 con este comando
+`npm install -g @angular/cli@latest`, si te da conflicto es probable que primero desinstales una version que ya tengas con 
+`npm uninstall -g @angular/cli` o si no hay que borrar el cache con `npm cache clean --force`
+- Luego hay que dar `npm install` para que instale las librerias y depencias que se usan
+- Luego si todo anda bien pues, `ng serve -o` para levantar el proyecto
+- Si quieres que se vea el proyecto en otros dispositivos pues `ng serve -o --host 0.0.0.0` luego desde cualquier dispositivo pegado a tu misma red
+  va a poder conectarse a traves de tu IP.v4 y con el puerto por ejemplo `192.168.1.23:4200` si no te sale es que hay que modificar el firewall para darle chance.
+
 # Telefonica
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.0.1.
